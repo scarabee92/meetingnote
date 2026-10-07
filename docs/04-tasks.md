@@ -72,4 +72,4 @@ CLAUDE.md + docs/ 6종 작성.
 | 3.5 할 일 화면 | 담당자·기한·회의 열이 있는 표. 좁은 화면에서 표만 가로 스크롤되고 문서 전체는 안 됨 | [x] |
 | 3.6 요소 이름 확인 | 코드의 id 가 03-design 표의 id(`q` `from` `to` `cards` `title` `metAt` `attendees` `file` `body` `btnUp` `btnSave` `result` `modal` `mTitle` `todoBody`)와 모두 같음. 빠지거나 다른 이름이 없음 | [x] |
 | 3.7 API 연결 | 녹취 파일이 세 갈래로 저장되고 새로고침해도 유지됨. 검색으로 지난 회의를 찾음. 360px 에서 안 깨짐 (01-product 성공 기준 4개) | [x] |
-| 3.8 git push | 원격 저장소에 push 되고 `.env` 가 올라가지 않음 | [ ] |
+| 3.8 git push | 원격 저장소에 push 되고 `.env` 가 올라가지 않음 | [x] |
