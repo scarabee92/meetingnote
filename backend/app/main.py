@@ -9,11 +9,12 @@ from fastapi import Depends, FastAPI, File, HTTPException, Query, Request, Respo
 from fastapi.encoders import jsonable_encoder
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app import gemini_service
-from app.config import ALLOWED_AUDIO, MAX_UPLOAD_BYTES, PORT
+from app.config import ALLOWED_AUDIO, FRONTEND_DIR, MAX_UPLOAD_BYTES, PORT
 from app.database import Base, engine, get_db
 from app.gemini_service import GeminiError
 from app.models import Meeting
@@ -142,6 +143,11 @@ def upload_audio(file: UploadFile = File(...)) -> UploadOut:
         logger.exception("받아쓰기 실패")
         raise HTTPException(status_code=502, detail="받아쓰기 호출에 실패했다") from exc
     return UploadOut(text=text)
+
+
+# 프론트는 같은 오리진에서 제공한다. API 경로 뒤에 마지막으로 마운트해야 /api 와 /docs 를 가리지 않는다.
+if FRONTEND_DIR.is_dir():
+    app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="frontend")
 
 
 if __name__ == "__main__":
