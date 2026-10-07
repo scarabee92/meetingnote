@@ -46,16 +46,16 @@ CLAUDE.md + docs/ 6종 작성.
 
 | 단계 | 검증 방법 | 완료 |
 |---|---|---|
-| 2.1 `backend/` 뼈대와 가상환경, 의존성 8개 설치 (`requirements.txt`) | `pip list` 에 8개만 추가되고 서버가 8000 포트에서 기동됨 | [ ] |
-| 2.2 `.env` 읽기 (`python-dotenv`) | pytest: 환경 변수에서 키와 모델명을 읽음. 코드에 키 문자열이 없음 | [ ] |
-| 2.3 Meeting 모델 8필드와 DB 세션 (SQLAlchemy, `sqlite_autoincrement`) | pytest: 행을 지우고 새로 넣어도 id 가 재사용되지 않음 | [ ] |
-| 2.4 요청 스키마(`extra="forbid"`)와 검증 예외 핸들러 | pytest: 필수 필드 누락은 400, 스펙 외 필드는 422 | [ ] |
-| 2.5 `POST /api/notes`, `GET /api/notes`, `GET /api/notes/{id}` | pytest: 201 / 200 / 404, 목록엔 body 가 없고 단건엔 있음 | [ ] |
-| 2.6 목록 검색 (`q`, `from`, `to`) | pytest: 제목·참석자 부분 일치, 본문은 검색 안 됨, `to` 는 그날 23:59:59 까지 | [ ] |
-| 2.7 `PUT /api/notes/{id}`, `DELETE /api/notes/{id}` | pytest: 수정 200, 삭제 204, 없는 id 는 404 | [ ] |
-| 2.8 `GET /api/todos` | pytest: what / who / when / note_id / note_title 필드, 회의 날짜 오래된 순 | [ ] |
-| 2.9 `POST /api/upload` (Gemini 받아쓰기) + 세 갈래 구분 연결 | pytest(실제 Gemini 호출, 05-conventions 따라 호출 사이 1초 간격): mp3·wav 외 415, 25MB 초과 413, 외부 실패 502, 구분 실패 시 201 + 빈 값 | [ ] |
-| 2.10 전체 테스트와 Swagger 확인 | `pytest` 전체 통과, `http://localhost:8000/docs` 에서 7개 경로가 보임 | [ ] |
+| 2.1 `backend/` 뼈대와 가상환경, 의존성 8개 설치 (`requirements.txt`) | `pip list` 에 8개만 추가되고 서버가 8000 포트에서 기동됨 | [x] |
+| 2.2 `.env` 읽기 (`python-dotenv`) | pytest: 환경 변수에서 키와 모델명을 읽음. 코드에 키 문자열이 없음 | [x] |
+| 2.3 Meeting 모델 8필드와 DB 세션 (SQLAlchemy, `sqlite_autoincrement`) | pytest: 행을 지우고 새로 넣어도 id 가 재사용되지 않음 | [x] |
+| 2.4 요청 스키마(`extra="forbid"`)와 검증 예외 핸들러 | pytest: 필수 필드 누락은 400, 스펙 외 필드는 422 | [x] |
+| 2.5 `POST /api/notes`, `GET /api/notes`, `GET /api/notes/{id}` | pytest: 201 / 200 / 404, 목록엔 body 가 없고 단건엔 있음 | [x] |
+| 2.6 목록 검색 (`q`, `from`, `to`) | pytest: 제목·참석자 부분 일치, 본문은 검색 안 됨, `to` 는 그날 23:59:59 까지 | [x] |
+| 2.7 `PUT /api/notes/{id}`, `DELETE /api/notes/{id}` | pytest: 수정 200, 삭제 204, 없는 id 는 404 | [x] |
+| 2.8 `GET /api/todos` | pytest: what / who / when / note_id / note_title 필드, 회의 날짜 오래된 순 | [x] |
+| 2.9 `POST /api/upload` (Gemini 받아쓰기) + 세 갈래 구분 연결 | pytest(실제 Gemini 호출, 05-conventions 따라 호출 사이 1초 간격): mp3·wav 외 415, 25MB 초과 413, 외부 실패 502, 구분 실패 시 201 + 빈 값 | [x] |
+| 2.10 전체 테스트와 Swagger 확인 | `pytest` 전체 통과, `http://localhost:8000/docs` 에서 7개 경로가 보임 | [x] |
 
 ## Phase 3 - 프론트
 
